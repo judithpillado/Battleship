@@ -21,4 +21,8 @@ class CellTest < Minitest::Test
   def test_it_has_a_ship
     assert_nil @cell.ship
   end
+
+  def test_empty
+    assert_equal true, @cell.empty?
+  end
 end
