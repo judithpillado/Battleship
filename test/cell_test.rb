@@ -43,4 +43,17 @@ class CellTest < Minitest::Test
 
   end
 
+  def test_it_can_render_cell
+    @cell_1 = Cell.new("B4")
+    assert_equal ".", @cell_1.render
+
+    @cell_1.fire_upon
+    assert_equal "M", @cell_1.render
+
+    @cell_2 = Cell.new("C3")
+    @cell_2.place_ship(@cruiser)
+    assert_equal ".", @cell_2.render
+    
+
+  end
 end
