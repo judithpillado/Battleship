@@ -26,16 +26,18 @@ class Cell
     @fired_upon = true
   end
 
-  def render(*)
-    if @fired_upon == false
-      p "."
-    elsif @fired_upon == true && @ship.health == @ship.length
-      p "M"
-    elsif @fired_upon == true && @ship.sunk? == false
-      p "H"
-    else @fired_upon == true && @ship.sunk? == true
-      p "X"
-    end 
+  def render(show = false)
+    if show == true && !@fired_upon && !empty?
+      "S"
+    elsif !@fired_upon
+      "."
+    elsif @fired_upon && empty?
+      "M"
+    elsif @fired_upon && !@ship.sunk?
+      "H"
+    else @fired_upon && @ship.sunk?
+      "X"
+    end
   end
 
 end
