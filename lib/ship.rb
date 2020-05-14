@@ -11,7 +11,7 @@ class Ship
     if @health > 0
       false
     else
-      true 
+      true
     end
   end
 
