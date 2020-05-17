@@ -25,7 +25,7 @@ class Board
   end
 
   def valid_length
-    @ship_type.length == @coordinate_values.length
+    @ship_type.length == @coordinate_value.length
   end
 
   def valid_coordinate?(coordinate_parameter)
@@ -47,21 +47,36 @@ class Board
     end
   end
 
-  def valid_placement?(ship_type, coordinate_values)
+  def available_cell(coordinate_value)
+    coordinate_value.all? do |coordinate|
+      @cells[coordinate].empty?
+    end
+  end
+
+  def valid_placement?(ship_type, coordinate_value)
     @ship_type = ship_type
-    @coordinate_values = coordinate_values
+    @coordinate_value = coordinate_value
     letters = []
     numbers = []
-    coordinate_values.each do |coordinate|
+    coordinate_value.each do |coordinate|
       letters << coordinate[0]
       numbers << coordinate[1]
     end
-    if consecutive(letters) && identical(numbers) && valid_length
+    if consecutive(letters) && identical(numbers) && valid_length && available_cell(coordinate_value)
       true
-    elsif consecutive(numbers) && identical(letters) && valid_length
+    elsif consecutive(numbers) && identical(letters) && valid_length && available_cell(coordinate_value)
       true
     else
       false
+    end
+  end
+
+  def place(ship_type, coordinate_value)
+    if valid_placement?(ship_type, coordinate_value)
+      coordinate_value.each do |coordinate|
+       cell = @cells[coordinate]
+       cell.place_ship(ship_type)
+     end
     end
   end
 
