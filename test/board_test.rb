@@ -4,7 +4,6 @@ require './lib/ship'
 require './lib/cell'
 require './lib/board'
 
-
 class BoardTest < Minitest::Test
 
   def setup
@@ -68,6 +67,14 @@ class BoardTest < Minitest::Test
     @board.place(@submarine, ["C1", "C2"])
     assert_equal false, @board.valid_placement?(@submarine, ["A1", "B1"])
     assert_equal true , @board.valid_placement?(@submarine, ["D1", "D2"])
+  end
+
+  def test_rendering_board
+    @board.place(@cruiser, ["A1", "A2", "A3"])
+    expected1 = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+    expected2 = "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n"
+    assert_equal expected1, @board.render
+    assert_equal expected2, @board.render(true)
   end
 
 end
