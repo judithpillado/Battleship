@@ -22,6 +22,23 @@ class GameTest < Minitest::Test
     assert_instance_of Game, @game
   end
 
+  def test_it_has_welcome_menu
+    assert_equal "Welcome to BATTLESHIP", @game.welcome_menu
+    assert_equal "p", ask_to_start
+  end
+
+
+  def test_a_player_can_place_their_ship
+    # check we can run player response through our methods
+
+    # same for submarine
+
+    # check for invalid coordinates Please try again.
+
+  end
+
+
+
 
 
 
