@@ -3,26 +3,49 @@ require './lib/cell'
 require './lib/board'
 require './lib/game'
 
-class Game
+
+# Menu
 
     p "Welcome to BATTLESHIP"
     p "Enter p to play. Enter q to quit."
     loop do
     ask_to_start = gets.chomp.downcase
-    # require "pry";binding.pry
 
       if ask_to_start == "q"
         p "Goodbye"
         exit
       elsif ask_to_start == "p"
         p "Start game"
-        exit
+        break
       else
         p "INVALID RESPONSE. Please enter p or q! "
       end
     end
 
+#Setup
+@c_board = Board.new
+@c_cruiser = Ship.new(@c_cruiser, 3)
+@c_sub = Ship.new(@c_sub, 2)
 
+p "Computer is placing ships"
+loop do
+  first_ship = @c_board.place(@c_cruiser, ["A1", "A2", "A3"])
+    if first_ship == nil
+      p "INVALID COORDINATES"
+    end
+     
+      @c_board.place(@c_sub, ["A1", "B1"])
+      #placing but c_board has @name of c_cruiser coming up nil.
+end
+require "pry"; binding.pry
+
+
+
+
+
+
+
+# p_board
 
   # def start_game(p_ship, c_ship)
   #   computer_place_ships
@@ -75,5 +98,3 @@ class Game
   #       p "Those are invalid coordinates. Please try again:"
   #     else
       # end
-
-end
