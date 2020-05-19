@@ -11,8 +11,9 @@ require './lib/board'
 
 p "Welcome to BATTLESHIP"
 p "Enter p to play.  Enter q to quit"
+p "> "
 ask_to_start = $stdin.gets.chomp
-
+#standardize answer
 if ask_to_start = "q" ||
 
 if ask_to_start = "p"
@@ -20,6 +21,7 @@ if ask_to_start = "p"
 end
 
 # How does it know it's a sub vs a cruiser
+ask_for_cruisers_coordinates = $stdin.gets.chomp
 
 # get input from p_board and assign it to variable
 ask_for_sub_coordinates = $stdin.gets.chomp

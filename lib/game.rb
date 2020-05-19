@@ -18,7 +18,11 @@ class Game
         "invalid response please enter valid response"
 
   end
+# setup
 
+#who is a winner
+# First player w all ship sunk.
+# - turn.ship_sunk? for each player
 
 
 end
