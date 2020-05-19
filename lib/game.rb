@@ -5,15 +5,10 @@ require './lib/game'
 
 class Game
 
-  def initialize(p_board, c_board)
-    @p_board = p_board
-    @c_board = c_board
-  end
-
     p "Welcome to BATTLESHIP"
     p "Enter p to play. Enter q to quit."
     loop do
-    ask_to_start = $stdin.gets.chomp.downcase
+    ask_to_start = gets.chomp.downcase
     # require "pry";binding.pry
 
       if ask_to_start == "q"
