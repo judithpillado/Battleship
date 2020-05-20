@@ -6,21 +6,44 @@ require './lib/game'
 
 # Welcome Menu
 
+
   p "Welcome to BATTLESHIP"
   p "Enter p to play. Enter q to quit."
     loop do
       ask_to_start = gets.chomp.downcase
 
+
       if ask_to_start == "q"
-        p "Goodbye"
+        p "¡Adiós!"
         exit
       elsif ask_to_start == "p"
+
         p "Start game"
         break
+
       else
         p "INVALID RESPONSE. Please enter p or q!"
       end
     end
+  end
+
+
+  def randomizing_coordinates
+    coordinate = "#{rand(65..68).chr}" + (rand(1..4).to_s)
+    if valid_placement(ship_type, coordinate_value)
+        if length == 2
+          coordinate.next
+        elsif length == 3
+          coordinate.next
+          coordinate.next
+        end
+    else
+      p "Try again please."
+    end
+  end
+
+end
+
 
 #Setup Computer
     @c_cruiser = Ship.new("Computer Cruiser", 3)
