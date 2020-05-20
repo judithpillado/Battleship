@@ -3,31 +3,92 @@ require './lib/cell'
 require './lib/board'
 require './lib/game'
 
-class Game
 
-  def initialize(p_board, c_board)
-    @p_board = p_board
-    @c_board = c_board
-  end
+# Menu
 
     p "Welcome to BATTLESHIP"
     p "Enter p to play. Enter q to quit."
     loop do
-    ask_to_start = $stdin.gets.chomp.downcase
-    # require "pry";binding.pry
+    ask_to_start = gets.chomp.downcase
 
       if ask_to_start == "q"
         p "Goodbye"
         exit
       elsif ask_to_start == "p"
         p "Start game"
-        exit
+        break
       else
         p "INVALID RESPONSE. Please enter p or q! "
       end
     end
 
+#Setup
+@c_cruiser = Ship.new(@c_cruiser, 3)
+@c_sub = Ship.new(@c_sub, 2)
 
+p "Computer is placing ships"
+@c_board = Board.new
+print @c_board.render
+  loop do
+  first_ship = @c_board.place(@c_cruiser, ["A1", "A2", "A3"])
+    if first_ship == nil
+      p "INVALID COORDINATES"
+    else
+      break
+    end
+
+  @c_board.place(@c_sub, ["B1", "C1"])
+      #placing but c_board has @name of c_cruiser coming up nil.
+    end
+
+p "Your turn to place your ships!"
+@p_board = Board.new
+print @p_board.render
+
+p "Above is your board, pick three horizontal or vertical coordinates to place your cruiser ship"
+p "Valid coordinates are letters first, then then numbers."
+# Use string concactation for setting example
+
+@p_cruiser = Ship.new(@p_cruiser, 3)
+
+  # loop do
+    p_cruiser_coords = gets.chomp.upcase
+    best_p_coords = p_cruiser_coords.gsub(",", "").split
+
+p_ship_1 = @p_board.place(@p_cruiser, best_p_coords)
+# "A1", "A2", "A3"
+# "A1, B1, C1"
+#
+# coordinates.each do |coordinate|
+#   coordinate.to_s
+
+  # if p_ship_1 == nil
+  #   p "INVALID COORDINATES"
+  #   p "Please try again"
+  # else
+  #   break
+  # end
+
+    # @c_board.place(@c_sub, ["A1", "B1"])
+    #placing but c_board has @name of c_cruiser coming up nil.
+  # end
+
+
+
+
+
+
+
+
+require "pry"; binding.pry
+
+
+
+
+
+
+
+# p_board
 
   # def start_game(p_ship, c_ship)
   #   computer_place_ships
@@ -80,5 +141,3 @@ class Game
   #       p "Those are invalid coordinates. Please try again:"
   #     else
       # end
-
-end
