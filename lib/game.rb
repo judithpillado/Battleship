@@ -25,7 +25,6 @@ require './lib/game'
         p "INVALID RESPONSE. Please enter p or q!"
       end
     end
-  end
 
 
   def randomizing_coordinates
@@ -41,8 +40,6 @@ require './lib/game'
       p "Try again please."
     end
   end
-
-end
 
 
 #Setup Computer
@@ -99,19 +96,19 @@ end
 
 # First turn
 
-    =============COMPUTER BOARD=============
+    "=============COMPUTER BOARD============="
     print @c_board.render
 
-    ==============PLAYER BOARD==============
+    "==============PLAYER BOARD=============="
     print @p_board.render
 # Integrate so that the turns keep going until there is one winner and ensure that the board keeps rendering.
-        if p_cruiser.sunk? == true && p_sub.sunk? == true
+        if @p_cruiser.sunk? == true && @p_sub.sunk? == true
         "Computer wins!"
         else
-            turn
+            @turn
         end
-        if c_cruiser.sunk? == true && c_sub.sunk? == true
+        if @c_cruiser.sunk? == true && @c_sub.sunk? == true
         "You win!"
         else
-          turn
+          @turn
         end
