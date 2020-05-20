@@ -23,20 +23,63 @@ require './lib/game'
     end
 
 #Setup
-@c_board = Board.new
 @c_cruiser = Ship.new(@c_cruiser, 3)
 @c_sub = Ship.new(@c_sub, 2)
 
 p "Computer is placing ships"
-loop do
+@c_board = Board.new
+print @c_board.render
+  loop do
   first_ship = @c_board.place(@c_cruiser, ["A1", "A2", "A3"])
     if first_ship == nil
       p "INVALID COORDINATES"
+    else
+      break
     end
-     
-      @c_board.place(@c_sub, ["A1", "B1"])
+
+  @c_board.place(@c_sub, ["B1", "C1"])
       #placing but c_board has @name of c_cruiser coming up nil.
-end
+    end
+
+p "Your turn to place your ships!"
+@p_board = Board.new
+print @p_board.render
+
+p "Above is your board, pick three horizontal or vertical coordinates to place your cruiser ship"
+p "Valid coordinates are letters first, then then numbers."
+# Use string concactation for setting example
+
+@p_cruiser = Ship.new(@p_cruiser, 3)
+
+  # loop do
+    p_cruiser_coords = gets.chomp.upcase
+    best_p_coords = p_cruiser_coords.gsub(",", "").split
+
+p_ship_1 = @p_board.place(@p_cruiser, best_p_coords)
+# "A1", "A2", "A3"
+# "A1, B1, C1"
+#
+# coordinates.each do |coordinate|
+#   coordinate.to_s
+
+  # if p_ship_1 == nil
+  #   p "INVALID COORDINATES"
+  #   p "Please try again"
+  # else
+  #   break
+  # end
+
+    # @c_board.place(@c_sub, ["A1", "B1"])
+    #placing but c_board has @name of c_cruiser coming up nil.
+  # end
+
+
+
+
+
+
+
+
 require "pry"; binding.pry
 
 
