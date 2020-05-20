@@ -7,4 +7,5 @@ require './lib/game'
 
 @game = Game.new(@p_board, @c_board)
 
-@game.start_game
+@game.randomizing_coordinates_cruiser
+@game.randomizing_coordinates_submarine
