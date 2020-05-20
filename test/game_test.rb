@@ -8,7 +8,6 @@ require './lib/game'
 
 class GameTest < Minitest::Test
 
-
   def setup
     @game = Game.new(@p_board, @c_board)
     @p_board = Board.new
@@ -22,10 +21,10 @@ class GameTest < Minitest::Test
   def test_it_exists
     assert_instance_of Game, @game
   end
-
-  def test_it_has_welcome_menu
-    assert_equal "Welcome to BATTLESHIP", @game.welcome_menu
-  end
+  #
+  # def test_it_has_welcome_menu
+  #   assert_equal "Welcome to BATTLESHIP", @game.welcome_menu
+  # end
 
   def test_it_can_randomize_coordinates
   @c_board = mock("random_c")

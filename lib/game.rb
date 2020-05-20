@@ -1,58 +1,50 @@
+require 'minitest/autorun'
+require 'minitest/pride'
 require './lib/ship'
 require './lib/cell'
 require './lib/board'
 require './lib/game'
 
+class Game
+  attr_reader :p_board,
+              :c_board,
+              :p_cruiser,
+              :c_cruiser,
+              :p_submarine,
+              :c_submarine
 
-# Welcome Menu
+  def initialize(p_board, c_board)
+    @p_board = Board.new
+    @c_board = Board.new
+    @p_cruiser = Ship.new("Cruiser", 3)
+    @c_cruiser = Ship.new("Cruiser", 3)
+    @p_submarine = Ship.new("Submarine", 2)
+    @c_submarine = Ship.new("Submarine", 2)
+  end
 
-
-  p "Welcome to BATTLESHIP"
-  p "Enter p to play. Enter q to quit."
+  def start_game
+    p "Welcome to BATTLESHIP"
+    p "Enter p to play. Enter q to quit."
     loop do
       ask_to_start = gets.chomp.downcase
-
-
       if ask_to_start == "q"
         p "¡Adiós!"
         exit
       elsif ask_to_start == "p"
-
         p "Start game"
         break
-
       else
         p "INVALID RESPONSE. Please enter p or q!"
       end
+      p "Computer is placing ships"
     end
-
-
-  def randomizing_coordinates
-    coordinate = "#{rand(65..68).chr}" + (rand(1..4).to_s)
-    if valid_placement(ship_type, coordinate_value)
-        if length == 2
-          coordinate.next
-        elsif length == 3
-          coordinate.next
-          coordinate.next
-        end
-    else
-      p "Try again please."
-    end
-  end
-
 
 #Setup Computer
-    @c_cruiser = Ship.new("Computer Cruiser", 3)
-    @c_sub = Ship.new(@c_sub, 2)
-    @c_board = Board.new
 
-    p "Computer is placing ships"
 
     # Random Coordinate Settings
 
       # code here
-
 
         loop do
       # Place Cruiser
@@ -112,3 +104,41 @@ require './lib/game'
         else
           @turn
         end
+end
+
+
+
+  def randomizing_coordinates_cruiser
+    loop do
+      first_coordinate = "#{rand(65..68).chr}" + (rand(1..4).to_s)
+      second_coordinate = "#{rand(65..68).chr}" + (rand(1..4).to_s)
+      third_coordinate = "#{rand(65..68).chr}" + (rand(1..4).to_s)
+      cruiser_coordinates = []
+      cruiser_coordinates << first_coordinate
+      cruiser_coordinates << second_coordinate
+      cruiser_coordinates << third_coordinate
+
+      good_cruiser_coordinates = @c_board.valid_placement?(@c_cruiser, cruiser_coordinates)
+      if good_cruiser_coordinates == true
+        @c_board.place(@c_cruiser, cruiser_coordinates)
+        break
+      end
+    end
+  end
+
+  def randomizing_coordinates_submarine
+    loop do
+      fourth_coordinate = "#{rand(65..68).chr}" + (rand(1..4).to_s)
+      fifth_coordinate = "#{rand(65..68).chr}" + (rand(1..4).to_s)
+      submarine_coordinates = []
+      submarine_coordinates << fourth_coordinate
+      submarine_coordinates << fifth_coordinate
+      good_submarine_coordinates = @c_board.valid_placement?(@c_submarine, submarine_coordinates)
+      if good_submarine_coordinates == true
+        @c_board.place(@c_submarine, submarine_coordinates)
+        break
+      end
+    end
+  end
+
+end
