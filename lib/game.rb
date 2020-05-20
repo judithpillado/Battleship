@@ -23,14 +23,14 @@ require './lib/game'
     end
 
 #Setup
-@c_cruiser = Ship.new(@c_cruiser, 3)
+@c_cruiser = Ship.new("Computer Cruiser", 3)
 @c_sub = Ship.new(@c_sub, 2)
 
 p "Computer is placing ships"
 @c_board = Board.new
 print @c_board.render
   loop do
-  first_ship = @c_board.place("Computer Cruiser", ["A1", "A2", "A3"])
+  first_ship = @c_board.place(@c_cruiser, ["A1", "A2", "A3"])
     if first_ship == nil
       p "INVALID COORDINATES"
     else
