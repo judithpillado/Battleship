@@ -30,7 +30,7 @@ p "Computer is placing ships"
 @c_board = Board.new
 print @c_board.render
   loop do
-  first_ship = @c_board.place(@c_cruiser, ["A1", "A2", "A3"])
+  first_ship = @c_board.place("Computer Cruiser", ["A1", "A2", "A3"])
     if first_ship == nil
       p "INVALID COORDINATES"
     else
@@ -49,13 +49,14 @@ p "Above is your board, pick three horizontal or vertical coordinates to place y
 p "Valid coordinates are letters first, then then numbers."
 # Use string concactation for setting example
 
-@p_cruiser = Ship.new(@p_cruiser, 3)
+@p_cruiser = Ship.new("Player Cruiser", 3)
 
   # loop do
     p_cruiser_coords = gets.chomp.upcase
     best_p_coords = p_cruiser_coords.gsub(",", "").split
-
+require "pry"; binding.pry
 p_ship_1 = @p_board.place(@p_cruiser, best_p_coords)
+
 # "A1", "A2", "A3"
 # "A1, B1, C1"
 #
@@ -80,7 +81,7 @@ p_ship_1 = @p_board.place(@p_cruiser, best_p_coords)
 
 
 
-require "pry"; binding.pry
+# require "pry"; binding.pry
 
 
 
