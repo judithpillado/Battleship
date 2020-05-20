@@ -38,7 +38,6 @@ class Game
       end
       p "Computer is placing ships"
     end
-  end
 
 #Setup Computer
 
@@ -107,13 +106,7 @@ class Game
         end
 end
 
-@c_sub = "A", "1"
 
- good_horizontal_pairings = [["B1", "B2"], [""]]
-
- good_vertical_pairings
-
- c_submarine_coordinate.find
 
   def randomizing_coordinates_cruiser
     loop do
