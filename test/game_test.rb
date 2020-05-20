@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'mocha/minitest'
 require './lib/ship'
 require './lib/cell'
 require './lib/board'
@@ -24,6 +25,12 @@ class GameTest < Minitest::Test
 
   def test_it_has_welcome_menu
     assert_equal "Welcome to BATTLESHIP", @game.welcome_menu
+  end
+
+  def test_it_can_randomize_coordinates
+  @c_board = mock("random_c")
+  @c_board.expects(:randomizing_coordinates).returns(["A3", "B3", "C3"])
+  assert_equal ["A3", "B3", "C3"], @game.randomizing_coordinates
   end
 
 end

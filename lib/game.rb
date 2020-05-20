@@ -31,4 +31,18 @@ class Game
     end
   end
 
+  def randomizing_coordinates
+    coordinate = "#{rand(65..68).chr}" + (rand(1..4).to_s)
+    if valid_placement(ship_type, coordinate_value)
+        if length == 2
+          coordinate.next
+        elsif length == 3
+          coordinate.next
+          coordinate.next
+        end
+    else
+      p "Try again please."
+    end
+  end
+
 end
