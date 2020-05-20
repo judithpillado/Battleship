@@ -7,4 +7,4 @@ require './lib/game'
 
 @game = Game.new(@p_board, @c_board)
 
-@game.start_game
+# @game.start_game

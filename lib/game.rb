@@ -3,29 +3,32 @@ require './lib/cell'
 require './lib/board'
 require './lib/game'
 
+class Game
 
+  def initialize(p_board, c_board)
+  end
+
+  # def start_game
 # Welcome Menu
 
 
-  p "Welcome to BATTLESHIP"
-  p "Enter p to play. Enter q to quit."
-    loop do
-      ask_to_start = gets.chomp.downcase
+    p "Welcome to BATTLESHIP"
+    p "Enter p to play. Enter q to quit."
+      loop do
+        ask_to_start = gets.chomp.downcase
 
+        if ask_to_start == "q"
+          p "¡Adiós!"
+          exit
+        elsif ask_to_start == "p"
 
-      if ask_to_start == "q"
-        p "¡Adiós!"
-        exit
-      elsif ask_to_start == "p"
+          p "Start game"
+          break
 
-        p "Start game"
-        break
-
-      else
-        p "INVALID RESPONSE. Please enter p or q!"
+        else
+          p "INVALID RESPONSE. Please enter p or q!"
       end
     end
-
 
   def randomizing_coordinates
     coordinate = "#{rand(65..68).chr}" + (rand(1..4).to_s)
@@ -112,3 +115,4 @@ require './lib/game'
         else
           @turn
         end
+      end
