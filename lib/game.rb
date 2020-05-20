@@ -81,13 +81,13 @@ require './lib/game'
 
     ==============PLAYER BOARD==============
     print @p_board.render
-
+# Integrate so that the turns keep going until there is one winner and ensure that the board keeps rendering.
         if p_cruiser.sunk? == true && p_sub.sunk? == true
         "Computer wins!"
         else
             turn
         end
-        if c_cruiser.sunk? == true && c_sub..sunk? == true
+        if c_cruiser.sunk? == true && c_sub.sunk? == true
         "You win!"
         else
           turn
