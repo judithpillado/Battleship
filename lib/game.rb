@@ -217,7 +217,9 @@ class Game
     loop do
     p_turn = gets.chomp.upcase
     cell_to_fire_upon = p_turn.gsub(",", "").to_s
-      if @c_board.cells[cell_to_fire_upon].fired_upon? == false
+      if @c_board.valid_coordinate?(cell_to_fire_upon) == false
+        p "please re-enter valid coordinate"
+      elsif @c_board.cells[cell_to_fire_upon].fired_upon? == false
           @c_board.cells[cell_to_fire_upon].fire_upon
           break
       else
