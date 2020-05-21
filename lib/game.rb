@@ -27,11 +27,12 @@ class Game
 
     randomizing_coordinates_cruiser
     randomizing_coordinates_submarine
+    computer_pause_for_effect
 
     player_cruiser_coordinates
     player_submarine_coordinates
 
-
+    game_board_rendering
     turn
     winner_celebration
 
@@ -93,6 +94,10 @@ class Game
       end
     end
 
+    def computer_pause_for_effect
+      p ".....Computer is placing ships"
+      pausing(2)
+    end
 
 
 
@@ -147,6 +152,8 @@ class Game
             break
           end
       end
+      print @p_board.render(true)
+      p "Here's your board. Get ready to play!"
   end
 
 # First turn
@@ -184,9 +191,10 @@ class Game
     def computer_turn
 
       random_fire = "#{rand(65..68).chr}" + (rand(1..4).to_s)
-      # random_fire == ???
 
-      @p_board.cells[sdfdsf].fire_upon
+      if @p_board.cells[random_fire].fired_upon? == false
+        @p_board.cells[random_fire].fire_upon
+
     end
 
     def winner?
