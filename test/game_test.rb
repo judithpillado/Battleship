@@ -21,15 +21,15 @@ class GameTest < Minitest::Test
   def test_it_exists
     assert_instance_of Game, @game
   end
-  #
-  # def test_it_has_welcome_menu
-  #   assert_equal "Welcome to BATTLESHIP", @game.welcome_menu
-  # end
+
+  def test_it_has_effects
+    assert_equal 30, @game.computer_pause_for_effect.length
+  end
 
   def test_it_can_randomize_coordinates
   @c_board = mock("random_c")
   @c_board.expects(:randomizing_coordinates).returns(["A3", "B3", "C3"])
-  assert_equal ["A3", "B3", "C3"], @game.randomizing_coordinates
+  assert_equal ["A3", "B3", "C3"], @game.randomizing_coordinates_cruiser
   end
 
 end

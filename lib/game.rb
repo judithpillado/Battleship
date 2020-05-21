@@ -28,14 +28,12 @@ class Game
     randomizing_coordinates_cruiser
     randomizing_coordinates_submarine
     computer_pause_for_effect
-
     player_cruiser_coordinates
     player_submarine_coordinates
     p "When you fire upon a coordinate, you will either see M, H, or X."
     p "M means you missed and did not hit a ship."
     p "H means you hit a part of the ship."
     p "X means you hit the entire ship and it has now sunk."
-
     game_board_rendering
     turn
     winner
@@ -99,9 +97,6 @@ class Game
     game_board_rendering
     turn
     winner
-    # finding_winner
-
-
   end
 
 
@@ -172,7 +167,7 @@ class Game
       p_cruiser_valid_coordinates = @p_board.valid_placement?(@p_cruiser, best_p_cruiser)
       if p_cruiser_valid_coordinates == false
         p "please re-enter valid coordinates."
-        elsif p_cruiser_valid_coordinates == true
+      elsif p_cruiser_valid_coordinates == true
         @p_board.place(@p_cruiser, best_p_cruiser)
           break
       end
@@ -202,7 +197,6 @@ class Game
   def game_board_rendering
     p "=============COMPUTER BOARD============="
       print @c_board.render
-      #make sure we revert to no parameter
     p "==============PLAYER BOARD=============="
       print @p_board.render(true)
   end
@@ -236,7 +230,6 @@ class Game
   end
 
   def winner
-    # require "pry"; binding.pry
     if @p_cruiser.sunk? == true && @p_submarine.sunk? == true
       p "You lost! You lost! You lost! You lost! You lost! You lost! You lost! You lost! You lost! You lost! You lost! You lost! You lost! You lost!"
       exit
