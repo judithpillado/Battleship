@@ -170,7 +170,9 @@ class Game
       p_cruiser_coordinates = gets.chomp.upcase
       best_p_cruiser = p_cruiser_coordinates.gsub(",", "").split
       p_cruiser_valid_coordinates = @p_board.valid_placement?(@p_cruiser, best_p_cruiser)
-      if p_cruiser_valid_coordinates == true
+      if p_cruiser_valid_coordinates == false
+        p "please re-enter valid coordinates."
+        elsif p_cruiser_valid_coordinates == true
         @p_board.place(@p_cruiser, best_p_cruiser)
           break
       end
@@ -187,7 +189,9 @@ class Game
         p_submarine_coordinates = gets.chomp.upcase
         best_p_submarine = p_submarine_coordinates.gsub(",", "").split
         p_submarine_valid_coordinates = @p_board.valid_placement?(@p_submarine, best_p_submarine)
-          if p_submarine_valid_coordinates == true
+          if p_submarine_valid_coordinates == false
+            p "please re-enter valid coordinates."
+          elsif p_submarine_valid_coordinates == true
             @p_board.place(@p_submarine, best_p_submarine)
             break
           end
